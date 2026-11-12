@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>停止焦慮三大科學動作導引系統</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 CDN (支援全站圖標，配置雙 CDN 確保穩定加載) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" />
+  <!-- Google Fonts: Noto Serif TC (思源宋體 / 繁體中文優雅宋體) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Noto Serif TC"', '"Songti TC"', '"Source Han Serif TC"', '"PMingLiU"', '"MingLiU"', 'serif'],
+            sans: ['"Noto Serif TC"', '"Songti TC"', '"Source Han Serif TC"', '"PMingLiU"', '"MingLiU"', 'serif'],
+          },
+          colors: {
+            sel: {
+              bg: '#FAF8F5',         // 溫潤燕麥奶底色
+              paper: '#FFFFFF',      // 潔淨棉紙白
+              card: '#F5F2EB',       // 亞麻米灰
+              border: '#E8E2D5',     // 天然紙緣色
+              'border-subtle': '#EFECE3',
+              ink: '#27342B',        // 深林木炭灰（溫柔的主文字）
+              'ink-soft': '#47564C', // 次級閱讀色
+              muted: '#717E74',      // 舒緩石灰綠
+              subtle: '#9CA79F',     // 輔助標示色
+              sage: '#4D6B56',       // 沉靜鼠尾草綠（主調）
+              'sage-soft': '#EAF0EB',// 淺鼠尾草膠囊
+              'sage-hover': '#3E5746',
+              terracotta: '#C67A55', // 溫和陶土橘
+              'terracotta-soft': '#FDF4EF',
+              mist: '#5B7F91',       // 清晨薄霧藍
+              'mist-soft': '#EFF5F8',
+              lavender: '#7A6E86',   // 內在安定紫灰
+              'lavender-soft': '#F4F1F7',
+              amber: '#D29B4D',      // 晨曦溫暖琥珀
+              'amber-soft': '#FEF7EC',
+            }
+          },
+          boxShadow: {
+            'sel-soft': '0 4px 20px -2px rgba(80, 72, 60, 0.05)',
+            'sel-card': '0 10px 30px -5px rgba(80, 72, 60, 0.07)',
+            'sel-float': '0 16px 40px -8px rgba(77, 107, 86, 0.12)',
+          },
+          animation: {
+            'breath-ambient': 'ambientPulse 6s ease-in-out infinite',
+            'float-slow': 'floatSlow 5s ease-in-out infinite',
+          },
+          keyframes: {
+            ambientPulse: {
+              '0%, 100%': { transform: 'scale(1)', opacity: '0.4' },
+              '50%': { transform: 'scale(1.06)', opacity: '0.7' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 全網文字統一為宋體規範（思源宋體 / 繁體明體） */
+    html, body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, a, label, b, strong, em {
+      font-family: 'Noto Serif TC', 'Songti TC', 'Source Han Serif TC', 'PMingLiU', 'MingLiU', serif;
+    }
+    span:not([class*="fa-"]), div:not([class*="fa-"]) {
+      font-family: inherit;
+    }
+
+    /* 嚴格保護 Font Awesome 圖標字型，避免被覆蓋導致顯示框框叉叉 */
+    .fa, .fas, .far, .fal, .fad, .fab, .fa-solid, .fa-regular, .fa-brands, [class*="fa-"], [class^="fa-"] {
+      font-family: "Font Awesome 6 Free", "FontAwesome" !important;
+      font-style: normal !important;
+      display: inline-block;
+    }
+    .fa-brands {
+      font-family: "Font Awesome 6 Brands", "FontAwesome" !important;
+    }
+    /* 自然柔和的光暈效果 */
+    @keyframes sel-glow {
+      0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(77, 107, 86, 0.25));
+      }
+      50% {
+        filter: drop-shadow(0 0 16px rgba(198, 122, 85, 0.35));
+      }
+    }
+
+    /* 吉祥物懸停特效：親和柔光 */
+    .mascot-container {
+      touch-action: none;
+      user-select: none;
+    }
+    .mascot-container:hover .mascot-img-wrapper {
+      animation: sel-glow 3s infinite ease-in-out;
+      transform-origin: center bottom;
+    }
+
+    /* 呼吸視覺化光圈轉場 */
+    .breath-orb {
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease;
+    }
+
+    /* SEL 全景自然散焦流動背景：晨光雲山漫射 */
+    @keyframes soft-drift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .panoramic-bg {
+      background: radial-gradient(circle at 50% 50%, rgba(91, 127, 145, 0.12), rgba(77, 107, 86, 0.08) 50%, transparent 85%),
+                  radial-gradient(circle at 15% 85%, rgba(198, 122, 85, 0.08), transparent 50%),
+                  radial-gradient(circle at 85% 15%, rgba(122, 110, 134, 0.08), transparent 50%);
+      background-size: 200% 200%;
+      animation: soft-drift 22s ease infinite;
+    }
+
+    /* 溫潤護眼滾動條 */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF8F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D8D2C4;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4D6B56;
+    }
+  </style>
+</head>
+<body class="bg-sel-bg text-sel-ink min-h-screen flex flex-col font-serif selection:bg-sel-sage-soft selection:text-sel-sage relative overflow-x-hidden">
+
+  <!-- 頂部導航列 (SEL 溫潤人文紙感) -->
+  <header class="w-full bg-sel-paper/90 backdrop-blur-md border-b border-sel-border sticky top-0 z-40 px-4 sm:px-6 lg:px-8 py-3.5 transition-all">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-sel-sage-soft text-sel-sage flex items-center justify-center shadow-sm border border-sel-sage/20">
+          <i class="fa-solid fa-seedling text-lg"></i>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold tracking-tight text-sel-ink flex items-center gap-2">
+            停止焦慮三大科學動作導引系統
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-sel-sage-soft text-sel-sage font-medium border border-sel-sage/30">5分鐘身心重置</span>
+          </h1>
+          <p class="text-xs text-sel-muted hidden sm:block">由下至上的生理反饋 · 溫柔喚醒副交感神經</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- 音效按鈕 -->
+        <button id="toggleAudioBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-sel-paper hover:bg-sel-card border border-sel-border text-xs sm:text-sm text-sel-ink-soft transition shadow-sel-soft" title="自然潮汐舒緩音">
+          <i class="fa-solid fa-water text-sel-mist" id="audioIcon"></i>
+          <span class="hidden md:inline" id="audioText">潮汐舒緩音</span>
+        </button>
+
+        <!-- 語音提示按鈕 -->
+        <button id="toggleSpeechBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-sel-paper hover:bg-sel-card border border-sel-border text-xs sm:text-sm text-sel-ink-soft transition shadow-sel-soft" title="溫和語音伴讀">
+          <i class="fa-solid fa-volume-high text-sel-sage" id="speechIcon"></i>
+          <span class="hidden md:inline" id="speechText">語音導引: 開</span>
+        </button>
+
+        <!-- 神經科學原理 Modal 按鈕 -->
+        <button id="openScienceModalBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-sel-sage hover:bg-sel-sage-hover text-white text-xs sm:text-sm font-medium transition shadow-sel-soft">
+          <i class="fa-solid fa-book-open"></i>
+          <span>科學原理</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主體區域 -->
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col gap-6">
+
+    <!-- 頂部溫暖引導扉頁 (Editorial Hero) -->
+    <section class="bg-sel-paper border border-sel-border rounded-3xl p-6 sm:p-8 shadow-sel-card relative overflow-hidden">
+      <!-- 柔和晨曦光斑裝飾 -->
+      <div class="absolute -right-12 -top-12 w-64 h-64 bg-sel-sage-soft/70 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute right-36 -bottom-16 w-56 h-56 bg-sel-terracotta-soft/60 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-sel-sage bg-sel-sage-soft px-3 py-1 rounded-full mb-2.5 border border-sel-sage/20">
+            <i class="fa-solid fa-feather-pointed"></i>
+            社會情緒學習 · 身體先行急救法
+          </div>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-sel-ink mb-2 leading-relaxed">
+            感到緊繃或腦中過載？讓身體溫柔接住大腦
+          </h2>
+          <p class="text-xs sm:text-sm text-sel-muted leading-relaxed">
+            焦慮發作時，理性思緒往往暫時下線。無需苛責自己「為什麼想不開」，依循
+            <strong class="text-sel-sage font-semibold">生理嘆息（90秒）</strong>、
+            <strong class="text-sel-mist font-semibold">全景視野（90秒）</strong> 與
+            <strong class="text-sel-terracotta font-semibold">54321感官著陸（120秒）</strong>，給身體完整的 5 分鐘，自然瓦解警戒警報。
+          </p>
+        </div>
+
+        <div class="w-full lg:w-auto shrink-0">
+          <button id="startFull5MinBtn" class="w-full sm:w-auto flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-sel-sage hover:bg-sel-sage-hover text-white font-semibold text-sm tracking-wide shadow-sel-float transition-all transform active:scale-95">
+            <i class="fa-solid fa-play text-xs"></i>
+            <span>開始 5 分鐘連續導引</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 階段導航標籤 (3 大動作藥丸膠囊) -->
+    <nav class="grid grid-cols-1 md:grid-cols-3 gap-3.5" aria-label="動作導引階段">
+      <!-- Tab 1 -->
+      <button class="step-tab flex items-center gap-3.5 p-4 rounded-2xl border bg-sel-sage border-sel-sage text-white shadow-sel-soft transition-all text-left" data-step="1">
+        <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+          <i class="fa-solid fa-lungs text-base"></i>
+        </div>
+        <div class="overflow-hidden">
+          <div class="text-[11px] opacity-80 tracking-wide">階段一 · 90 秒</div>
+          <div class="text-sm sm:text-base font-bold truncate">生理嘆息呼吸</div>
+        </div>
+      </button>
+
+      <!-- Tab 2 -->
+      <button class="step-tab flex items-center gap-3.5 p-4 rounded-2xl border bg-sel-paper border-sel-border text-sel-muted hover:border-sel-sage/40 hover:text-sel-ink shadow-sel-soft transition-all text-left" data-step="2">
+        <div class="w-10 h-10 rounded-xl bg-sel-card flex items-center justify-center shrink-0 text-sel-mist">
+          <i class="fa-solid fa-eye text-base"></i>
+        </div>
+        <div class="overflow-hidden">
+          <div class="text-[11px] text-sel-subtle tracking-wide">階段二 · 90 秒</div>
+          <div class="text-sm sm:text-base font-bold truncate">全景視野散焦</div>
+        </div>
+      </button>
+
+      <!-- Tab 3 -->
+      <button class="step-tab flex items-center gap-3.5 p-4 rounded-2xl border bg-sel-paper border-sel-border text-sel-muted hover:border-sel-sage/40 hover:text-sel-ink shadow-sel-soft transition-all text-left" data-step="3">
+        <div class="w-10 h-10 rounded-xl bg-sel-card flex items-center justify-center shrink-0 text-sel-terracotta">
+          <i class="fa-solid fa-hand-holding-heart text-base"></i>
+        </div>
+        <div class="overflow-hidden">
+          <div class="text-[11px] text-sel-subtle tracking-wide">階段三 · 120 秒</div>
+          <div class="text-sm sm:text-base font-bold truncate">54321 感官著陸</div>
+        </div>
+      </button>
+    </nav>
+
+    <!-- 核心操作畫布 (Sanctuary Card) -->
+    <div class="bg-sel-paper border border-sel-border rounded-3xl p-6 sm:p-10 min-h-[520px] flex flex-col justify-between relative shadow-sel-card">
+
+      <!-- ================= 階段一：生理嘆息 (Physiological Sigh) ================= -->
+      <div id="stepPanel1" class="step-panel flex flex-col items-center justify-between flex-1 gap-7 w-full">
+        <div class="text-center max-w-xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sel-sage-soft text-sel-sage text-xs font-semibold mb-2 border border-sel-sage/30">
+            <i class="fa-solid fa-wind"></i>
+            動作一 · 快速平衡體內二氧化碳 · 撫平心跳
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-bold text-sel-ink">生理嘆息（Physiological Sigh）</h3>
+          <p class="text-xs sm:text-sm text-sel-muted mt-2 leading-relaxed">
+            跟隨圓球呼吸：鼻子深吸氣 ➔ 快速補吸一小口撐開微肺泡 ➔ 嘴巴慢長吐氣放鬆。
+          </p>
+        </div>
+
+        <!-- 呼吸視覺動態核心球體 (溫和有機玉石質感) -->
+        <div class="relative flex items-center justify-center my-3 w-72 h-72 sm:w-80 sm:h-80">
+          <!-- 外光環 (柔和晨霧) -->
+          <div id="breathHalo" class="absolute inset-0 rounded-full border border-sel-sage/30 bg-sel-sage-soft/30 transition-all duration-700 scale-90 opacity-40"></div>
+          <div id="breathWave" class="absolute w-60 h-60 rounded-full border border-sel-sage/40 transition-all duration-700 scale-95 opacity-50"></div>
+          
+          <!-- 中心呼吸實心球體 (空間充裕，主副標排版舒展) -->
+          <div id="breathOrb" class="breath-orb w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-gradient-to-tr from-[#8EAF96] via-[#A8C7B0] to-[#DFEDE3] flex flex-col items-center justify-center text-center px-4 py-3 shadow-sel-float border border-white/80 select-none">
+            <i id="breathActionIcon" class="fa-solid fa-arrow-up text-2xl text-sel-ink mb-1.5 transition-transform duration-300"></i>
+            <span id="breathActionText" class="text-xl sm:text-2xl font-bold text-sel-ink tracking-wide whitespace-nowrap leading-snug">準備開始</span>
+            <span id="breathSubText" class="text-xs sm:text-sm text-sel-ink-soft/90 font-medium whitespace-nowrap mt-0.5">跟隨節奏平穩呼吸</span>
+            <span id="breathTimerNum" class="text-[11px] text-sel-ink-soft mt-2.5 font-medium bg-white/60 backdrop-blur-xs px-3 py-0.5 rounded-full border border-white/60 shadow-xs whitespace-nowrap">點擊下方按鈕</span>
+          </div>
+        </div>
+
+        <!-- 進度與計數 -->
+        <div class="w-full max-w-md flex flex-col gap-2.5">
+          <div class="flex items-center justify-between text-xs text-sel-muted">
+            <span class="flex items-center gap-1.5 font-medium"><i class="fa-solid fa-rotate text-sel-sage"></i> 完成循環：<b id="sighCycleCount" class="text-sel-ink text-sm">0</b> / 6 次</span>
+            <span class="flex items-center gap-1.5 font-medium"><i class="fa-regular fa-clock text-sel-sage"></i> 剩餘時間：<b id="step1TimeLeft" class="text-sel-ink text-sm">90</b> 秒</span>
+          </div>
+          <div class="w-full bg-sel-card h-2.5 rounded-full overflow-hidden border border-sel-border-subtle">
+            <div id="step1ProgressBar" class="bg-sel-sage h-full w-0 transition-all duration-300 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- 操作控制器 -->
+        <div class="flex items-center gap-3 pt-1">
+          <button id="startStep1Btn" class="px-8 py-3.5 rounded-2xl bg-sel-sage text-white font-medium hover:bg-sel-sage-hover transition flex items-center gap-2 text-sm shadow-sel-soft">
+            <i class="fa-solid fa-play text-xs"></i>
+            <span id="step1BtnText">開始生理嘆息</span>
+          </button>
+          <button id="resetStep1Btn" class="px-4 py-3.5 rounded-2xl bg-sel-card hover:bg-sel-border border border-sel-border text-sel-ink-soft transition text-sm" title="重設">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= 階段二：全景視野 (Panoramic Vision) ================= -->
+      <div id="stepPanel2" class="step-panel hidden flex-col items-center justify-between flex-1 gap-7 w-full">
+        <div class="text-center max-w-xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sel-mist-soft text-sel-mist text-xs font-semibold mb-2 border border-sel-mist/30">
+            <i class="fa-solid fa-eye"></i>
+            動作二 · 鬆開視線焦點 · 關閉戰逃眼動警報
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-bold text-sel-ink">全景視野散焦（Panoramic Vision）</h3>
+          <p class="text-xs sm:text-sm text-sel-muted mt-2 leading-relaxed">
+            凝視單一點會刺激交感神經；將眼角向左右擴展，大腦會感知環境無威脅而切回平靜。
+          </p>
+        </div>
+
+        <!-- 散焦自然晨光漫射視覺區 -->
+        <div id="panoramicVisualBox" class="w-full max-w-2xl h-64 sm:h-72 rounded-3xl border border-sel-border panoramic-bg relative flex flex-col items-center justify-center p-6 text-center overflow-hidden shadow-sm">
+          <div class="absolute inset-x-8 top-1/2 -translate-y-1/2 flex justify-between items-center opacity-40 pointer-events-none">
+            <div class="flex items-center gap-2 text-sel-mist text-xs"><i class="fa-solid fa-arrow-left"></i> 感知左方空間</div>
+            <div class="flex items-center gap-2 text-sel-mist text-xs">感知右方空間 <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <div class="relative z-10 flex flex-col items-center gap-2.5">
+            <div class="w-16 h-16 rounded-2xl bg-white/80 border border-sel-mist/30 flex items-center justify-center shadow-sel-soft">
+              <i class="fa-regular fa-eye text-sel-mist text-2xl"></i>
+            </div>
+            <div id="panoramicGuideText" class="text-base sm:text-lg font-bold text-sel-ink max-w-md">
+              輕輕抬頭，望向前方整片空間，不需要盯著任何物體
+            </div>
+            <div class="text-xs text-sel-muted max-w-sm">
+              感受眼角左右兩側的餘光邊緣，讓肩膀自然沉下來，平順呼吸。
+            </div>
+          </div>
+        </div>
+
+        <!-- 進度與控制 -->
+        <div class="w-full max-w-md flex flex-col gap-2.5">
+          <div class="flex items-center justify-between text-xs text-sel-muted">
+            <span class="flex items-center gap-1.5 font-medium"><i class="fa-solid fa-expand text-sel-mist"></i> 視野狀態：周邊全景展開</span>
+            <span class="flex items-center gap-1.5 font-medium"><i class="fa-regular fa-clock text-sel-mist"></i> 散焦時間：<b id="step2TimeLeft" class="text-sel-ink text-sm">90</b> 秒</span>
+          </div>
+          <div class="w-full bg-sel-card h-2.5 rounded-full overflow-hidden border border-sel-border-subtle">
+            <div id="step2ProgressBar" class="bg-sel-mist h-full w-0 transition-all duration-300 rounded-full"></div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-1">
+          <button id="startStep2Btn" class="px-8 py-3.5 rounded-2xl bg-sel-mist text-white font-medium hover:opacity-95 transition flex items-center gap-2 text-sm shadow-sel-soft">
+            <i class="fa-solid fa-play text-xs"></i>
+            <span id="step2BtnText">開始 90 秒全景散焦</span>
+          </button>
+          <button id="resetStep2Btn" class="px-4 py-3.5 rounded-2xl bg-sel-card hover:bg-sel-border border border-sel-border text-sel-ink-soft transition text-sm" title="重設">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= 階段三：54321 感官著陸法 ================= -->
+      <div id="stepPanel3" class="step-panel hidden flex-col justify-between flex-1 gap-7 w-full">
+        <div class="text-center max-w-xl mx-auto">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sel-terracotta-soft text-sel-terracotta text-xs font-semibold mb-2 border border-sel-terracotta/30">
+            <i class="fa-solid fa-anchor"></i>
+            動作三 · 五感物理錨定 · 將意識帶回此時此刻
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-bold text-sel-ink">5-4-3-2-1 感官著陸法（Grounding）</h3>
+          <p class="text-xs sm:text-sm text-sel-muted mt-2 leading-relaxed">
+            焦慮往往源於大腦飄向未來的假想風暴；透過實體感官確認，大腦便知道「現在的我非常安全」。
+          </p>
+        </div>
+
+        <!-- 54321 生活正念探索卡片 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 w-full">
+          <!-- 5 看 -->
+          <div class="grounding-card bg-sel-paper border border-sel-border rounded-2xl p-4 flex flex-col justify-between transition hover:border-sel-sage/60 shadow-sel-soft" data-count="5">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl font-black text-sel-sage">5</span>
+                <i class="fa-solid fa-eye text-sel-sage/70"></i>
+              </div>
+              <div class="text-xs font-bold text-sel-ink mb-1">看見 5 個細節</div>
+              <p class="text-[11px] text-sel-muted mb-3 leading-relaxed">如：光影折射、牆壁顏色、桌面木紋</p>
+            </div>
+            <button class="grounding-check-btn w-full py-2 px-2.5 rounded-xl bg-sel-card hover:bg-sel-sage-soft text-xs font-medium text-sel-ink-soft hover:text-sel-sage border border-sel-border transition flex items-center justify-center gap-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>點擊確認</span>
+            </button>
+          </div>
+
+          <!-- 4 聽 -->
+          <div class="grounding-card bg-sel-paper border border-sel-border rounded-2xl p-4 flex flex-col justify-between transition hover:border-sel-mist/60 shadow-sel-soft" data-count="4">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl font-black text-sel-mist">4</span>
+                <i class="fa-solid fa-ear-listen text-sel-mist/70"></i>
+              </div>
+              <div class="text-xs font-bold text-sel-ink mb-1">聽見 4 種聲音</div>
+              <p class="text-[11px] text-sel-muted mb-3 leading-relaxed">如：冷氣風聲、遠處鳥鳴、自己呼吸</p>
+            </div>
+            <button class="grounding-check-btn w-full py-2 px-2.5 rounded-xl bg-sel-card hover:bg-sel-mist-soft text-xs font-medium text-sel-ink-soft hover:text-sel-mist border border-sel-border transition flex items-center justify-center gap-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>點擊確認</span>
+            </button>
+          </div>
+
+          <!-- 3 摸 -->
+          <div class="grounding-card bg-sel-paper border border-sel-border rounded-2xl p-4 flex flex-col justify-between transition hover:border-sel-terracotta/60 shadow-sel-soft" data-count="3">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl font-black text-sel-terracotta">3</span>
+                <i class="fa-solid fa-hand text-sel-terracotta/70"></i>
+              </div>
+              <div class="text-xs font-bold text-sel-ink mb-1">觸摸 3 種質地</div>
+              <p class="text-[11px] text-sel-muted mb-3 leading-relaxed">如：棉質衣袖、桌面冰涼、手心貼合</p>
+            </div>
+            <button class="grounding-check-btn w-full py-2 px-2.5 rounded-xl bg-sel-card hover:bg-sel-terracotta-soft text-xs font-medium text-sel-ink-soft hover:text-sel-terracotta border border-sel-border transition flex items-center justify-center gap-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>點擊確認</span>
+            </button>
+          </div>
+
+          <!-- 2 聞 -->
+          <div class="grounding-card bg-sel-paper border border-sel-border rounded-2xl p-4 flex flex-col justify-between transition hover:border-sel-amber/60 shadow-sel-soft" data-count="2">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl font-black text-sel-amber">2</span>
+                <i class="fa-solid fa-wind text-sel-amber/70"></i>
+              </div>
+              <div class="text-xs font-bold text-sel-ink mb-1">嗅聞 2 抹氣息</div>
+              <p class="text-[11px] text-sel-muted mb-3 leading-relaxed">如：清涼空氣、茶水芳香、衣物淡香</p>
+            </div>
+            <button class="grounding-check-btn w-full py-2 px-2.5 rounded-xl bg-sel-card hover:bg-sel-amber-soft text-xs font-medium text-sel-ink-soft hover:text-sel-amber border border-sel-border transition flex items-center justify-center gap-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>點擊確認</span>
+            </button>
+          </div>
+
+          <!-- 1 嚐 -->
+          <div class="grounding-card bg-sel-paper border border-sel-border rounded-2xl p-4 flex flex-col justify-between transition hover:border-sel-lavender/60 shadow-sel-soft" data-count="1">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xl font-black text-sel-lavender">1</span>
+                <i class="fa-solid fa-mug-saucer text-sel-lavender/70"></i>
+              </div>
+              <div class="text-xs font-bold text-sel-ink mb-1">體會 1 種滋味</div>
+              <p class="text-[11px] text-sel-muted mb-3 leading-relaxed">如：口中微甘、喝一小口水溫潤舌尖</p>
+            </div>
+            <button class="grounding-check-btn w-full py-2 px-2.5 rounded-xl bg-sel-card hover:bg-sel-lavender-soft text-xs font-medium text-sel-ink-soft hover:text-sel-lavender border border-sel-border transition flex items-center justify-center gap-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>點擊確認</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 計時器與控制 -->
+        <div class="w-full max-w-md mx-auto flex flex-col gap-2.5">
+          <div class="flex items-center justify-between text-xs text-sel-muted">
+            <span class="flex items-center gap-1.5 font-medium"><i class="fa-solid fa-clipboard-check text-sel-terracotta"></i> 已確認感官：<b id="groundingCompletedCount" class="text-sel-ink text-sm">0</b> / 5</span>
+            <span class="flex items-center gap-1.5 font-medium"><i class="fa-regular fa-clock text-sel-terracotta"></i> 倒數計時：<b id="step3TimeLeft" class="text-sel-ink text-sm">120</b> 秒</span>
+          </div>
+          <div class="w-full bg-sel-card h-2.5 rounded-full overflow-hidden border border-sel-border-subtle">
+            <div id="step3ProgressBar" class="bg-sel-terracotta h-full w-0 transition-all duration-300 rounded-full"></div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 pt-1">
+          <button id="startStep3Btn" class="px-8 py-3.5 rounded-2xl bg-sel-terracotta text-white font-medium hover:opacity-95 transition flex items-center gap-2 text-sm shadow-sel-soft">
+            <i class="fa-solid fa-play text-xs"></i>
+            <span id="step3BtnText">開始 120 秒著陸計時</span>
+          </button>
+          <button id="resetStep3Btn" class="px-4 py-3.5 rounded-2xl bg-sel-card hover:bg-sel-border border border-sel-border text-sel-ink-soft transition text-sm" title="重設">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 神經科學原理解析模組 (底部 3 塊心靈筆記卡片) -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4.5">
+      <div class="bg-sel-paper border border-sel-border rounded-3xl p-6 hover:border-sel-sage/50 transition shadow-sel-soft flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3.5 mb-3.5">
+            <div class="w-10 h-10 rounded-2xl bg-sel-sage-soft text-sel-sage flex items-center justify-center font-bold text-base border border-sel-sage/20">
+              <i class="fa-solid fa-lungs"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-sel-ink">撐開肺泡與迷走神經</h4>
+              <span class="text-xs text-sel-sage font-medium">生理嘆息科學機制</span>
+            </div>
+          </div>
+          <p class="text-xs text-sel-muted leading-relaxed">
+            急促淺呼吸會讓肺底微小肺泡塌陷、CO₂ 積累。第二次「深吸補氣」能物理性撐開塌陷肺泡；隨後慢長呼氣直接啟動迷走神經，溫柔命令心臟減速。
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-sel-paper border border-sel-border rounded-3xl p-6 hover:border-sel-mist/50 transition shadow-sel-soft flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3.5 mb-3.5">
+            <div class="w-10 h-10 rounded-2xl bg-sel-mist-soft text-sel-mist flex items-center justify-center font-bold text-base border border-sel-mist/20">
+              <i class="fa-solid fa-expand"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-sel-ink">視野散焦與安全模式</h4>
+              <span class="text-xs text-sel-mist font-medium">全景視野科學機制</span>
+            </div>
+          </div>
+          <p class="text-xs text-sel-muted leading-relaxed">
+            人類演化中，凝視單一威脅（或手機螢幕）會激發交感神經警戒。當眼球散焦並感知兩側空間時，大腦神經細胞會即刻接收到「環境安全無虞」的生物訊號。
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-sel-paper border border-sel-border rounded-3xl p-6 hover:border-sel-terracotta/50 transition shadow-sel-soft flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3.5 mb-3.5">
+            <div class="w-10 h-10 rounded-2xl bg-sel-terracotta-soft text-sel-terracotta flex items-center justify-center font-bold text-base border border-sel-terracotta/20">
+              <i class="fa-solid fa-compass"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-sel-ink">解除解離與當下錨定</h4>
+              <span class="text-xs text-sel-terracotta font-medium">54321 著陸法機制</span>
+            </div>
+          </div>
+          <p class="text-xs text-sel-muted leading-relaxed">
+            焦慮本質是大腦預測未來的極端災難。藉由五感強迫注意力處理「此時此地」的實體細節，能溫和中斷反芻迴路，讓飄浮的意識踏實著陸。
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= 吉祥物 (LiyuChillGuy) 溫暖陪伴夥伴 ================= -->
+  <div id="mascotContainer" class="mascot-container fixed left-4 sm:left-6 bottom-16 sm:bottom-14 z-50 cursor-grab active:cursor-grabbing select-none" style="touch-action: none;">
+    <!-- 溫暖手寫便箋對話氣泡 -->
+    <div id="mascotBubble" class="absolute -top-16 left-1/2 -translate-x-1/2 px-3.5 py-2 rounded-2xl bg-sel-paper text-sel-ink border border-sel-border text-xs font-semibold whitespace-nowrap shadow-sel-card pointer-events-none opacity-0 translate-y-2 transition-all duration-300 flex items-center gap-2">
+      <i class="fa-solid fa-seedling text-sel-sage"></i>
+      <span id="mascotSpeechText">放輕鬆，我在這裡陪著你。</span>
+    </div>
+
+    <!-- 吉祥物本體包裹層 (Hover 溫和自然微光) -->
+    <div class="mascot-img-wrapper relative transition-transform duration-200">
+      <img id="mascotImg" src="image/LiyuChillGuy.svg" alt="LiyuChillGuy 吉祥物" class="w-20 h-20 sm:w-24 sm:h-24 object-contain pointer-events-none drop-shadow-md" onerror="handleMascotFallback(this)">
+    </div>
+
+    <!-- 拖曳提示便籤 -->
+    <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-sel-muted bg-sel-paper/95 px-2 py-0.5 rounded-full border border-sel-border shadow-sm whitespace-nowrap pointer-events-none">
+      <i class="fa-solid fa-hand text-[9px] mr-0.5 text-sel-sage"></i> 拖我走走
+    </div>
+  </div>
+
+  <!-- 神經科學彈窗 Modal (精裝心靈筆記隨身書) -->
+  <div id="scienceModal" class="fixed inset-0 bg-sel-ink/40 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-sel-paper border border-sel-border rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-sel-float relative max-h-[90vh] overflow-y-auto">
+      <button id="closeScienceModalBtn" class="absolute right-5 top-5 w-9 h-9 rounded-xl bg-sel-card hover:bg-sel-border text-sel-muted hover:text-sel-ink flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-5">
+        <div class="w-11 h-11 rounded-2xl bg-sel-sage-soft text-sel-sage flex items-center justify-center text-xl border border-sel-sage/20">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <div>
+          <h3 class="text-lg sm:text-xl font-bold text-sel-ink">神經科學導引指南：為什麼「想通」沒有用？</h3>
+          <p class="text-xs text-sel-sage font-medium">基於 Andrew Huberman 等神經生物學與 SEL 實證研究</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 text-xs sm:text-sm text-sel-ink-soft leading-relaxed">
+        <div class="p-4 rounded-2xl bg-sel-card/70 border border-sel-border">
+          <h4 class="font-bold text-sel-ink mb-1.5 flex items-center gap-2">
+            <i class="fa-solid fa-bell text-sel-terracotta"></i>
+            1. 杏仁核警報接管與理性下線
+          </h4>
+          <p class="text-sel-muted leading-relaxed">
+            當焦慮暴發時，大腦負責危險警報的杏仁核全面接管。負責邏輯思考、理性分析的前額葉皮質供血與活動驟降。這時對自己說「不要焦慮」就像拿擴音器對著火警警報器講道理一樣徒勞。
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-sel-card/70 border border-sel-border">
+          <h4 class="font-bold text-sel-ink mb-1.5 flex items-center gap-2">
+            <i class="fa-solid fa-seedling text-sel-sage"></i>
+            2. 由下至上（Bottom-Up）的身體自癒反饋
+          </h4>
+          <p class="text-sel-muted leading-relaxed">
+            心靈無法直接硬性控制心靈，但**身體可以直接改變大腦的生化狀態**。透過深吸補氣排出多餘二氧化碳、全景視野散焦解除凝視警戒、感官著陸拉回當下，警報由身體端自然關閉。
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-sel-card/70 border border-sel-border">
+          <h4 class="font-bold text-sel-ink mb-1.5 flex items-center gap-2">
+            <i class="fa-solid fa-hourglass-half text-sel-mist"></i>
+            3. 溫柔的五分鐘定律（The 5-Minute Window）
+          </h4>
+          <p class="text-sel-muted leading-relaxed">
+            交感神經刺激的體內激素在沒有持續新威脅下，自然代謝半衰期約數分鐘。給身體完整的 5 分鐘，神經遞質將重新歸於平衡，迎來真正的踏實感。
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-7 flex justify-end">
+        <button id="closeScienceModalBtn2" class="px-6 py-3 rounded-2xl bg-sel-sage text-white font-medium text-xs sm:text-sm hover:bg-sel-sage-hover transition shadow-sel-soft">
+          明白，返回導引
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 完成祝賀彈窗 (正念撫慰明信片) -->
+  <div id="congratsModal" class="fixed inset-0 bg-sel-ink/40 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-sel-paper border border-sel-border rounded-3xl max-w-md w-full p-7 sm:p-8 text-center shadow-sel-float relative">
+      <div class="w-16 h-16 rounded-2xl bg-sel-sage-soft text-sel-sage border border-sel-sage/30 mx-auto flex items-center justify-center text-3xl mb-4 shadow-sm">
+        <i class="fa-solid fa-spa"></i>
+      </div>
+      <h3 class="text-2xl font-bold text-sel-ink mb-2">安穩了，警報已經解除</h3>
+      <p class="text-xs sm:text-sm text-sel-muted leading-relaxed mb-6">
+        你已經透過三大身體動作溫柔引導副交感神經接管節奏。給自己一個溫和的深呼吸，喝一口溫水，安住在這一刻的平靜中。
+      </p>
+      <button id="closeCongratsBtn" class="w-full py-3.5 rounded-2xl bg-sel-sage text-white font-semibold text-sm hover:bg-sel-sage-hover transition shadow-sel-soft">
+        帶著平靜回到生活
+      </button>
+    </div>
+  </div>
+
+  <!-- 頁尾版權宣告與社群連結 (置中極簡) -->
+  <footer class="w-full bg-sel-paper/80 border-t border-sel-border py-6 px-4 text-center mt-auto">
+    <div class="max-w-6xl mx-auto flex flex-col items-center justify-center gap-2.5">
+      <!-- FB 粉絲專頁按鈕 -->
+      <a href="https://www.facebook.com/happyliyuchilltiger/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sel-card hover:bg-sel-sage-soft text-sel-ink-soft hover:text-sel-sage border border-sel-border hover:border-sel-sage/40 transition-all text-xs font-medium shadow-xs group">
+        <i class="fa-brands fa-facebook text-[#1877F2] text-sm group-hover:scale-110 transition-transform"></i>
+        <span>快樂鯉魚秋老虎</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-sel-subtle group-hover:text-sel-sage transition-colors"></i>
+      </a>
+      <div class="text-xs text-sel-subtle font-medium tracking-wider">
+        Copyright © Liyuchiutiger Gongminshen
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =========================================================
+     * 1. 核心狀態與音訊系統 (Web Audio API 合成粉紅噪音與海浪)
+     * ========================================================= */
+    const appState = {
+      currentStep: 1,
+      isFull5MinRunning: false,
+      speechEnabled: true,
+      audioRunning: false,
+      
+      // 階段計時與循環 (總計 90s + 90s + 120s = 300s / 5分鐘)
+      step1Interval: null,
+      step1TimeLeft: 90,
+      step1Cycle: 0,
+      step1Phase: 'idle', // 'inhale1', 'inhale2', 'exhale', 'pause'
+
+      step2Interval: null,
+      step2TimeLeft: 90,
+
+      step3Interval: null,
+      step3TimeLeft: 120,
+      step3Checklist: [false, false, false, false, false],
+    };
+
+    // Web Audio API：合成環境粉紅噪音/海浪 (免外部依賴音檔)
+    let audioCtx = null;
+    let noiseNode = null;
+    let gainNode = null;
+    let filterNode = null;
+
+    function initAudio() {
+      if (audioCtx) return;
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+
+        // 產生 5 秒粉紅/平緩噪聲 Buffer
+        const bufferSize = audioCtx.sampleRate * 4;
+        const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          b0 = 0.99886 * b0 + white * 0.0555179;
+          b1 = 0.99332 * b1 + white * 0.0750759;
+          b2 = 0.96900 * b2 + white * 0.1538520;
+          b3 = 0.86650 * b3 + white * 0.3104856;
+          b4 = 0.55000 * b4 + white * 0.5329522;
+          b5 = -0.7616 * b5 - white * 0.0168980;
+          output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
+          b6 = white * 0.115926;
+        }
+
+        noiseNode = audioCtx.createBufferSource();
+        noiseNode.buffer = noiseBuffer;
+        noiseNode.loop = true;
+
+        filterNode = audioCtx.createBiquadFilter();
+        filterNode.type = 'lowpass';
+        filterNode.frequency.value = 400; // 柔和低頻，如同潮汐
+
+        gainNode = audioCtx.createGain();
+        gainNode.gain.value = 0.001;
+
+        noiseNode.connect(filterNode);
+        filterNode.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        noiseNode.start(0);
+      } catch (e) {
+        console.warn('Web Audio not supported or blocked:', e);
+      }
+    }
+
+    function toggleAudio() {
+      initAudio();
+      if (!audioCtx) return;
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const audioIcon = document.getElementById('audioIcon');
+      const audioText = document.getElementById('audioText');
+
+      if (appState.audioRunning) {
+        gainNode.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.4);
+        appState.audioRunning = false;
+        audioIcon.className = 'fa-solid fa-water text-sel-subtle';
+        audioText.textContent = '潮汐舒緩音: 關';
+      } else {
+        gainNode.gain.setTargetAtTime(0.35, audioCtx.currentTime, 0.8);
+        appState.audioRunning = true;
+        audioIcon.className = 'fa-solid fa-water text-sel-mist';
+        audioText.textContent = '潮汐舒緩音: 開';
+      }
+    }
+
+    // Web Speech API：語音提示 (支援中文)
+    function speakText(text) {
+      if (!appState.speechEnabled || !('speechSynthesis' in window)) return;
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW';
+        utterance.rate = 0.9;
+        utterance.pitch = 0.95;
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        // 忽略可能存在的語音阻擋
+      }
+    }
+
+    /* =========================================================
+     * 2. 階段切換與 UI 管理 (SEL 柔和藥丸切換)
+     * ========================================================= */
+    const stepTabs = document.querySelectorAll('.step-tab');
+    const stepPanels = {
+      1: document.getElementById('stepPanel1'),
+      2: document.getElementById('stepPanel2'),
+      3: document.getElementById('stepPanel3'),
+    };
+
+    const tabColors = {
+      1: 'text-sel-sage',
+      2: 'text-sel-mist',
+      3: 'text-sel-terracotta'
+    };
+
+    function switchStep(stepNumber) {
+      appState.currentStep = stepNumber;
+
+      // 更新分頁按鈕外觀 (SEL 溫潤切換)
+      stepTabs.forEach(tab => {
+        const step = parseInt(tab.dataset.step);
+        const iconWrap = tab.querySelector('.shrink-0');
+        if (step === stepNumber) {
+          tab.className = 'step-tab flex items-center gap-3.5 p-4 rounded-2xl border bg-sel-sage border-sel-sage text-white shadow-sel-soft transition-all text-left';
+          if (iconWrap) {
+            iconWrap.className = 'w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0 text-white';
+          }
+        } else {
+          tab.className = 'step-tab flex items-center gap-3.5 p-4 rounded-2xl border bg-sel-paper border-sel-border text-sel-muted hover:border-sel-sage/40 hover:text-sel-ink shadow-sel-soft transition-all text-left';
+          if (iconWrap) {
+            iconWrap.className = `w-10 h-10 rounded-xl bg-sel-card flex items-center justify-center shrink-0 ${tabColors[step] || 'text-sel-sage'}`;
+          }
+        }
+      });
+
+      // 顯示對應面板
+      Object.keys(stepPanels).forEach(key => {
+        if (parseInt(key) === stepNumber) {
+          stepPanels[key].classList.remove('hidden');
+          stepPanels[key].classList.add('flex');
+        } else {
+          stepPanels[key].classList.add('hidden');
+          stepPanels[key].classList.remove('flex');
+        }
+      });
+    }
+
+    stepTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const step = parseInt(tab.dataset.step);
+        switchStep(step);
+      });
+    });
+
+    /* =========================================================
+     * 3. 階段一：生理嘆息 (Physiological Sigh) 核心動畫導引
+     *    循環結構：鼻子深吸 (4s) -> 補吸一口 (1.5s) -> 慢長呼氣 (8s) -> 暫歇 (1.5s) = 15s 一次，共6次 = 90秒
+     * ========================================================= */
+    const breathOrb = document.getElementById('breathOrb');
+    const breathHalo = document.getElementById('breathHalo');
+    const breathActionText = document.getElementById('breathActionText');
+    const breathSubText = document.getElementById('breathSubText');
+    const breathActionIcon = document.getElementById('breathActionIcon');
+    const breathTimerNum = document.getElementById('breathTimerNum');
+    const sighCycleCount = document.getElementById('sighCycleCount');
+    const step1TimeLeftEl = document.getElementById('step1TimeLeft');
+    const step1ProgressBar = document.getElementById('step1ProgressBar');
+    const startStep1Btn = document.getElementById('startStep1Btn');
+    const step1BtnText = document.getElementById('step1BtnText');
+    const resetStep1Btn = document.getElementById('resetStep1Btn');
+
+    let sighTimer = null;
+
+    function runSighCycle() {
+      if (appState.step1Cycle >= 6) {
+        completeStep1();
+        return;
+      }
+
+      appState.step1Cycle++;
+      sighCycleCount.textContent = appState.step1Cycle;
+
+      // 步驟 1: 第一次鼻子深吸滿 (4 秒)
+      appState.step1Phase = 'inhale1';
+      breathActionText.textContent = '鼻子深吸氣';
+      if (breathSubText) breathSubText.textContent = '吸至約八分滿';
+      breathActionIcon.className = 'fa-solid fa-arrow-up text-2xl text-sel-ink mb-1.5 transition-transform duration-300';
+      breathOrb.style.transform = 'scale(1.16)';
+      breathHalo.style.transform = 'scale(1.28)';
+      breathHalo.style.opacity = '0.7';
+      speakText('鼻子深吸氣，吸到大約八分滿');
+
+      // 步驟 2: 4秒後，再補吸一小口 (1.5 秒)
+      sighTimer = setTimeout(() => {
+        appState.step1Phase = 'inhale2';
+        breathActionText.textContent = '補吸一口';
+        if (breathSubText) breathSubText.textContent = '撐開微小肺泡';
+        breathActionIcon.className = 'fa-solid fa-angles-up text-2xl text-sel-ink mb-1.5 transition-transform duration-300';
+        breathOrb.style.transform = 'scale(1.24)';
+        breathHalo.style.transform = 'scale(1.38)';
+        speakText('再補吸一口，撐開微小肺泡');
+
+        // 步驟 3: 1.5秒後，用嘴緩慢吐長氣 (8 秒)
+        sighTimer = setTimeout(() => {
+          appState.step1Phase = 'exhale';
+          breathActionText.textContent = '嘴巴慢長呼氣';
+          if (breathSubText) breathSubText.textContent = '徹底放鬆吐盡';
+          breathActionIcon.className = 'fa-solid fa-arrow-down text-2xl text-sel-ink-soft mb-1.5 transition-transform duration-300';
+          breathOrb.style.transform = 'scale(0.92)';
+          breathHalo.style.transform = 'scale(0.95)';
+          breathHalo.style.opacity = '0.3';
+          speakText('嘴巴慢長呼氣，完全放鬆，排出二氧化碳');
+
+          // 步驟 4: 8秒後，微歇息 (1.5 秒)
+          sighTimer = setTimeout(() => {
+            appState.step1Phase = 'pause';
+            breathActionText.textContent = '短暫停歇';
+            if (breathSubText) breathSubText.textContent = '感受心跳平靜';
+            breathActionIcon.className = 'fa-solid fa-minus text-2xl text-sel-subtle mb-1.5 transition-transform duration-300';
+            breathOrb.style.transform = 'scale(1)';
+
+            // 進入下一循環
+            sighTimer = setTimeout(() => {
+              runSighCycle();
+            }, 1500);
+
+          }, 8000);
+
+        }, 1500);
+
+      }, 4000);
+    }
+
+    function startStep1() {
+      if (appState.step1Interval) {
+        // 暫停
+        clearInterval(appState.step1Interval);
+        clearTimeout(sighTimer);
+        appState.step1Interval = null;
+        step1BtnText.textContent = '繼續生理嘆息';
+        breathActionText.textContent = '導引已暫停';
+        if (breathSubText) breathSubText.textContent = '點擊下方繼續';
+        return;
+      }
+
+      step1BtnText.textContent = '暫停';
+      appState.step1Cycle = 0;
+      appState.step1TimeLeft = 90;
+      step1ProgressBar.style.width = '0%';
+      runSighCycle();
+
+      appState.step1Interval = setInterval(() => {
+        appState.step1TimeLeft--;
+        step1TimeLeftEl.textContent = appState.step1TimeLeft;
+        breathTimerNum.textContent = `第 ${appState.step1Cycle}/6 次循環中`;
+        const percent = ((90 - appState.step1TimeLeft) / 90) * 100;
+        step1ProgressBar.style.width = `${percent}%`;
+
+        if (appState.step1TimeLeft <= 0) {
+          completeStep1();
+        }
+      }, 1000);
+    }
+
+    function completeStep1() {
+      clearInterval(appState.step1Interval);
+      clearTimeout(sighTimer);
+      appState.step1Interval = null;
+      breathActionText.textContent = '生理嘆息完成';
+      if (breathSubText) breathSubText.textContent = '身心平靜重置';
+      breathActionIcon.className = 'fa-solid fa-circle-check text-2xl text-sel-sage mb-1.5';
+      step1ProgressBar.style.width = '100%';
+      step1BtnText.textContent = '再次開始';
+      speakText('很好，胸口已經開始放鬆。接下來進行全景視野散焦。');
+
+      if (appState.isFull5MinRunning) {
+        setTimeout(() => {
+          switchStep(2);
+          startStep2();
+        }, 1500);
+      }
+    }
+
+    function resetStep1() {
+      clearInterval(appState.step1Interval);
+      clearTimeout(sighTimer);
+      appState.step1Interval = null;
+      appState.step1TimeLeft = 90;
+      appState.step1Cycle = 0;
+      sighCycleCount.textContent = '0';
+      step1TimeLeftEl.textContent = '90';
+      step1ProgressBar.style.width = '0%';
+      breathActionText.textContent = '準備開始';
+      if (breathSubText) breathSubText.textContent = '跟隨節奏平穩呼吸';
+      breathTimerNum.textContent = '點擊下方按鈕';
+      breathOrb.style.transform = 'scale(1)';
+      breathHalo.style.transform = 'scale(0.9)';
+      breathActionIcon.className = 'fa-solid fa-arrow-up text-2xl text-sel-ink mb-1.5';
+      step1BtnText.textContent = '開始生理嘆息';
+    }
+
+    startStep1Btn.addEventListener('click', startStep1);
+    resetStep1Btn.addEventListener('click', resetStep1);
+
+    /* =========================================================
+     * 4. 階段二：全景視野 (Panoramic Vision)
+     * ========================================================= */
+    const startStep2Btn = document.getElementById('startStep2Btn');
+    const step2BtnText = document.getElementById('step2BtnText');
+    const resetStep2Btn = document.getElementById('resetStep2Btn');
+    const step2TimeLeftEl = document.getElementById('step2TimeLeft');
+    const step2ProgressBar = document.getElementById('step2ProgressBar');
+    const panoramicGuideText = document.getElementById('panoramicGuideText');
+
+    const panoramicPrompts = [
+      { time: 80, text: '抬起下巴，望向遠方空間或窗外，不鎖定單一焦點' },
+      { time: 60, text: '刻意放鬆眼窩周圍的細小肌肉，讓眼球微微散焦' },
+      { time: 40, text: '感受身體左右兩側的空間邊界，視野彷彿 180 度展開' },
+      { time: 20, text: '注意你的肩膀是否自然下沉，神經系統正切回平靜模式' },
+      { time: 5, text: '維持這種寬廣舒適的空間感，自然平順地呼吸' },
+    ];
+
+    function startStep2() {
+      if (appState.step2Interval) {
+        clearInterval(appState.step2Interval);
+        appState.step2Interval = null;
+        step2BtnText.textContent = '繼續散焦';
+        return;
+      }
+
+      step2BtnText.textContent = '暫停散焦';
+      speakText('請抬頭，放鬆視線，將眼球散焦，看見整個視野的全景。');
+
+      appState.step2Interval = setInterval(() => {
+        appState.step2TimeLeft--;
+        step2TimeLeftEl.textContent = appState.step2TimeLeft;
+        const percent = ((90 - appState.step2TimeLeft) / 90) * 100;
+        step2ProgressBar.style.width = `${percent}%`;
+
+        // 動態更新提示文字
+        const prompt = panoramicPrompts.find(p => p.time === appState.step2TimeLeft);
+        if (prompt) {
+          panoramicGuideText.textContent = prompt.text;
+          speakText(prompt.text);
+        }
+
+        if (appState.step2TimeLeft <= 0) {
+          clearInterval(appState.step2Interval);
+          appState.step2Interval = null;
+          step2BtnText.textContent = '散焦完成';
+          panoramicGuideText.textContent = '全景視野重置完成！戰逃警戒模式已解除。';
+          speakText('很好，警戒聚焦已解除。接下來進行54321感官著陸。');
+
+          if (appState.isFull5MinRunning) {
+            setTimeout(() => {
+              switchStep(3);
+              startStep3();
+            }, 1500);
+          }
+        }
+      }, 1000);
+    }
+
+    function resetStep2() {
+      clearInterval(appState.step2Interval);
+      appState.step2Interval = null;
+      appState.step2TimeLeft = 90;
+      step2TimeLeftEl.textContent = '90';
+      step2ProgressBar.style.width = '0%';
+      step2BtnText.textContent = '開始 90 秒全景散焦';
+      panoramicGuideText.textContent = '輕輕抬頭，望向前方整片空間，不需要盯著任何物體';
+    }
+
+    startStep2Btn.addEventListener('click', startStep2);
+    resetStep2Btn.addEventListener('click', resetStep2);
+
+    /* =========================================================
+     * 5. 階段三：54321 感官著陸法 (Grounding)
+     * ========================================================= */
+    const startStep3Btn = document.getElementById('startStep3Btn');
+    const step3BtnText = document.getElementById('step3BtnText');
+    const resetStep3Btn = document.getElementById('resetStep3Btn');
+    const step3TimeLeftEl = document.getElementById('step3TimeLeft');
+    const step3ProgressBar = document.getElementById('step3ProgressBar');
+    const groundingCompletedCountEl = document.getElementById('groundingCompletedCount');
+    const groundingCards = document.querySelectorAll('.grounding-card');
+
+    groundingCards.forEach((card, index) => {
+      const btn = card.querySelector('.grounding-check-btn');
+      btn.addEventListener('click', () => {
+        const isChecked = appState.step3Checklist[index];
+        appState.step3Checklist[index] = !isChecked;
+
+        if (!isChecked) {
+          card.classList.add('border-sel-sage', 'bg-sel-sage-soft/30');
+          btn.innerHTML = '<i class="fa-solid fa-circle-check text-sel-sage"></i><span class="text-sel-sage font-semibold">已覺察</span>';
+          btn.classList.add('bg-white', 'border-sel-sage/40');
+        } else {
+          card.classList.remove('border-sel-sage', 'bg-sel-sage-soft/30');
+          btn.innerHTML = '<i class="fa-regular fa-circle"></i><span>點擊確認</span>';
+          btn.classList.remove('bg-white', 'border-sel-sage/40');
+        }
+
+        const count = appState.step3Checklist.filter(Boolean).length;
+        groundingCompletedCountEl.textContent = count;
+
+        if (count === 5 && !appState.step3Interval) {
+          speakText('所有感官已確認，意識成功著陸於此時此刻。');
+        }
+      });
+    });
+
+    function startStep3() {
+      if (appState.step3Interval) {
+        clearInterval(appState.step3Interval);
+        appState.step3Interval = null;
+        step3BtnText.textContent = '繼續著陸';
+        return;
+      }
+
+      step3BtnText.textContent = '暫停計時';
+      speakText('請在周圍環境中，依序找出 5樣看到的、4樣聽到的、3樣摸到的、2樣聞到的、1樣嚐到的。');
+
+      appState.step3Interval = setInterval(() => {
+        appState.step3TimeLeft--;
+        step3TimeLeftEl.textContent = appState.step3TimeLeft;
+        const percent = ((120 - appState.step3TimeLeft) / 120) * 100;
+        step3ProgressBar.style.width = `${percent}%`;
+
+        if (appState.step3TimeLeft <= 0) {
+          clearInterval(appState.step3Interval);
+          appState.step3Interval = null;
+          step3BtnText.textContent = '計時結束';
+          speakText('感官著陸完成。三大動作導引結束，神經警報已解除，請放鬆安住於當下。');
+
+          if (appState.isFull5MinRunning) {
+            appState.isFull5MinRunning = false;
+            setTimeout(() => {
+              congratsModal.classList.remove('hidden');
+              congratsModal.classList.add('flex');
+            }, 1200);
+          }
+        }
+      }, 1000);
+    }
+
+    function resetStep3() {
+      clearInterval(appState.step3Interval);
+      appState.step3Interval = null;
+      appState.step3TimeLeft = 120;
+      step3TimeLeftEl.textContent = '120';
+      step3ProgressBar.style.width = '0%';
+      step3BtnText.textContent = '開始 120 秒著陸計時';
+      appState.step3Checklist = [false, false, false, false, false];
+      groundingCompletedCountEl.textContent = '0';
+
+      groundingCards.forEach(card => {
+        card.classList.remove('border-sel-sage', 'bg-sel-sage-soft/30');
+        const btn = card.querySelector('.grounding-check-btn');
+        btn.innerHTML = '<i class="fa-regular fa-circle"></i><span>點擊確認</span>';
+        btn.classList.remove('bg-white', 'border-sel-sage/40');
+      });
+    }
+
+    startStep3Btn.addEventListener('click', startStep3);
+    resetStep3Btn.addEventListener('click', resetStep3);
+
+    /* =========================================================
+     * 6. 完成祝賀彈窗控制
+     * ========================================================= */
+    const congratsModal = document.getElementById('congratsModal');
+    const closeCongratsBtn = document.getElementById('closeCongratsBtn');
+
+    closeCongratsBtn.addEventListener('click', () => {
+      congratsModal.classList.add('hidden');
+      congratsModal.classList.remove('flex');
+      switchStep(1);
+      resetStep1();
+      resetStep2();
+      resetStep3();
+    });
+
+    /* =========================================================
+     * 7. 一鍵 5 分鐘連續急救模式
+     * ========================================================= */
+    const startFull5MinBtn = document.getElementById('startFull5MinBtn');
+    startFull5MinBtn.addEventListener('click', () => {
+      appState.isFull5MinRunning = true;
+      initAudio();
+      if (!appState.audioRunning) toggleAudio();
+
+      switchStep(1);
+      resetStep1();
+      startStep1();
+      speakText('開始五分鐘神經科學解焦急救流程。第一階段：生理嘆息，請跟著圓球呼吸。');
+    });
+
+    /* =========================================================
+     * 8. 吉祥物互動：滑鼠與觸控自由拖曳 (限制於螢幕範圍內) + 點擊氣泡對話
+     * ========================================================= */
+    const mascotContainer = document.getElementById('mascotContainer');
+    const mascotBubble = document.getElementById('mascotBubble');
+    const mascotSpeechText = document.getElementById('mascotSpeechText');
+
+    const chillQuotes = [
+      '深呼吸～我就在這裡陪著你。',
+      '前額葉正在重新上線，一切都安全。',
+      '把你的視線散開，世界很寬廣。',
+      '不用急著想通，身體會帶你回到平靜。',
+      '你是安全的，這一刻沒有任何威脅。',
+      '摸摸桌子的邊緣，你在當下，非常穩固。'
+    ];
+
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let elemStartX = 0;
+    let elemStartY = 0;
+    let hasMoved = false;
+
+    // 觸控與滑鼠拖曳統一處理
+    function onPointerDown(e) {
+      isDragging = true;
+      hasMoved = false;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      dragStartX = clientX;
+      dragStartY = clientY;
+
+      const rect = mascotContainer.getBoundingClientRect();
+      elemStartX = rect.left;
+      elemStartY = rect.top;
+
+      // 切換為 left/top 固定絕對座標
+      mascotContainer.style.left = `${elemStartX}px`;
+      mascotContainer.style.top = `${elemStartY}px`;
+      mascotContainer.style.bottom = 'auto';
+
+      window.addEventListener('mousemove', onPointerMove);
+      window.addEventListener('mouseup', onPointerUp);
+      window.addEventListener('touchmove', onPointerMove, { passive: false });
+      window.addEventListener('touchend', onPointerUp);
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      if (e.cancelable) e.preventDefault();
+
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      const dx = clientX - dragStartX;
+      const dy = clientY - dragStartY;
+
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+        hasMoved = true;
+      }
+
+      let newX = elemStartX + dx;
+      let newY = elemStartY + dy;
+
+      // 視窗邊界限制
+      const mascotW = mascotContainer.offsetWidth;
+      const mascotH = mascotContainer.offsetHeight;
+      const maxW = window.innerWidth - mascotW;
+      const maxH = window.innerHeight - mascotH;
+
+      newX = Math.max(10, Math.min(newX, maxW - 10));
+      newY = Math.max(10, Math.min(newY, maxH - 10));
+
+      mascotContainer.style.left = `${newX}px`;
+      mascotContainer.style.top = `${newY}px`;
+    }
+
+    function onPointerUp() {
+      if (!isDragging) return;
+      isDragging = false;
+      window.removeEventListener('mousemove', onPointerMove);
+      window.removeEventListener('mouseup', onPointerUp);
+      window.removeEventListener('touchmove', onPointerMove);
+      window.removeEventListener('touchend', onPointerUp);
+
+      // 若只是單純點擊（非拖曳），觸發對話氣泡
+      if (!hasMoved) {
+        triggerMascotSpeech();
+      }
+    }
+
+    function triggerMascotSpeech() {
+      const quote = chillQuotes[Math.floor(Math.random() * chillQuotes.length)];
+      mascotSpeechText.textContent = quote;
+      mascotBubble.classList.remove('opacity-0', 'translate-y-2');
+      mascotBubble.classList.add('opacity-100', 'translate-y-0');
+      speakText(quote);
+
+      setTimeout(() => {
+        mascotBubble.classList.add('opacity-0', 'translate-y-2');
+        mascotBubble.classList.remove('opacity-100', 'translate-y-0');
+      }, 4000);
+    }
+
+    mascotContainer.addEventListener('mousedown', onPointerDown);
+    mascotContainer.addEventListener('touchstart', onPointerDown, { passive: false });
+
+    // 吉祥物 Fallback 圖片繪製（若本地尚未存在 image/LiyuChillGuy.svg）
+    window.handleMascotFallback = function(imgElement) {
+      console.log('載入本機吉祥物預設向量：image/LiyuChillGuy.svg');
+      // 以內聯 SVG 繪製可愛平靜小人 Chill Guy，確保圖片永遠清晰顯示
+      const fallbackSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" fill="%23111b2f" stroke="%232dd4bf" stroke-width="4"/><path d="M30 46Q38 42 44 46" stroke="%2338bdf8" stroke-width="4" stroke-linecap="round"/><path d="M56 46Q62 42 70 46" stroke="%2338bdf8" stroke-width="4" stroke-linecap="round"/><path d="M38 64Q50 72 62 64" stroke="%232dd4bf" stroke-width="4" stroke-linecap="round"/><circle cx="28" cy="58" r="5" fill="%23f43f5e" opacity="0.6"/><circle cx="72" cy="58" r="5" fill="%23f43f5e" opacity="0.6"/><path d="M42 22C42 16 58 16 58 22" stroke="%236366f1" stroke-width="3" stroke-linecap="round"/></svg>`;
+      imgElement.src = fallbackSvg;
+    };
+
+    /* =========================================================
+     * 9. 頂部導航列按鈕與彈窗控制
+     * ========================================================= */
+    const toggleAudioBtn = document.getElementById('toggleAudioBtn');
+    const toggleSpeechBtn = document.getElementById('toggleSpeechBtn');
+    const speechIcon = document.getElementById('speechIcon');
+    const speechText = document.getElementById('speechText');
+
+    toggleAudioBtn.addEventListener('click', toggleAudio);
+
+    toggleSpeechBtn.addEventListener('click', () => {
+      appState.speechEnabled = !appState.speechEnabled;
+      if (appState.speechEnabled) {
+        speechIcon.className = 'fa-solid fa-volume-high text-sel-sage';
+        speechText.textContent = '語音導引: 開';
+        speakText('語音導引已開啟');
+      } else {
+        speechIcon.className = 'fa-solid fa-volume-xmark text-sel-subtle';
+        speechText.textContent = '語音導引: 關';
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      }
+    });
+
+    const openScienceModalBtn = document.getElementById('openScienceModalBtn');
+    const scienceModal = document.getElementById('scienceModal');
+    const closeScienceModalBtn = document.getElementById('closeScienceModalBtn');
+    const closeScienceModalBtn2 = document.getElementById('closeScienceModalBtn2');
+
+    function toggleScienceModal(show) {
+      if (show) {
+        scienceModal.classList.remove('hidden');
+        scienceModal.classList.add('flex');
+      } else {
+        scienceModal.classList.add('hidden');
+        scienceModal.classList.remove('flex');
+      }
+    }
+
+    openScienceModalBtn.addEventListener('click', () => toggleScienceModal(true));
+    closeScienceModalBtn.addEventListener('click', () => toggleScienceModal(false));
+    closeScienceModalBtn2.addEventListener('click', () => toggleScienceModal(false));
+
+    scienceModal.addEventListener('click', (e) => {
+      if (e.target === scienceModal) toggleScienceModal(false);
+    });
+
+    // 鍵盤無障礙支援 (ESC 關閉彈窗)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleScienceModal(false);
+        congratsModal.classList.add('hidden');
+        congratsModal.classList.remove('flex');
+      }
+    });
+  </script>
+</body>
+</html>
