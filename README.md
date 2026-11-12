@@ -10,6 +10,7 @@
 * **GitHub Pages 線上即時體驗**：[https://yaoshuchin.github.io/1151112-neuro-calm/](https://yaoshuchin.github.io/1151112-neuro-calm/)
 * **GitHub 專案倉庫**：[https://github.com/yaoshuchin/1151112-neuro-calm](https://github.com/yaoshuchin/1151112-neuro-calm)
 * **原始專案來源**：[https://gongminshenliyuchiutiger.github.io/neuro-calm/](https://gongminshenliyuchiutiger.github.io/neuro-calm/)
+* **系統存取密碼**：`049`（南投國中輔導專用密碼）
 
 ---
 

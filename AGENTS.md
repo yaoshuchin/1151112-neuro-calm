@@ -7,6 +7,7 @@
 - **主要工作目錄**：`D:\antigravity\1151112生命教育娋`
 - **GitHub repo**：`https://github.com/yaoshuchin/1151112-neuro-calm`
 - **GitHub Pages**：`https://yaoshuchin.github.io/1151112-neuro-calm/`
+- **系統存取密碼**：`049`
 - **預設 branch**：`main`
 
 ## 工作規則
